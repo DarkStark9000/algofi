@@ -1,5 +1,6 @@
 const container = document.querySelector('.content');
 
+
 function insertion_start () {
   
   let bars = []; 
