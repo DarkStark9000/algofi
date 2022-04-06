@@ -19,7 +19,7 @@ async function selectionSort(delay = 3)
             await new Promise((resolve) =>
             setTimeout(() => {
                 resolve();
-            }, 300)
+            }, 3)
             );
             
             // To store the integer value of jth bar to var1 
