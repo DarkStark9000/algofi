@@ -1,25 +1,22 @@
 const container = document.querySelector('.content');
 
-function newArray () {
-  
-  let bars = []; 
-  
+function newArray () { 
   for (let i = 0; i < 100; i++) 
   {
-    bars[i] = Math.floor(Math.random() * 101);
+    bars= Math.floor(Math.random() * 101);
 
-    const bar = document.createElement("div"); 
-    bar.classList.add("bar");
+    const divbar = document.createElement("div"); 
+    divbar.classList.add("bar");
     
-    bar.style.height = `${bars[i] * 3}px`;
-    bar.style.transform = `translateX(${i * 30}px)`;
+    divbar.style.height = `${bars * 3}px`;
+    divbar.style.transform = `translateX(${i * 30}px)`;
     
     const barLabel = document.createElement("label");
     
     barLabel.classList.add("bar_id");
-    barLabel.innerHTML = bars[i];
+    barLabel.innerHTML = bars;
     
-    bar.appendChild(barLabel);
-    container.appendChild(bar);
+    divbar.appendChild(barLabel);
+    container.appendChild(divbar);
   }
 }
