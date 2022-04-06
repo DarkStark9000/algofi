@@ -24,7 +24,7 @@
     
     <div class="navbar">
         <div class="newarray">
-            <button type="button" class="navbar navbtn">New Array</button>
+            <button type="button" class="navbar navbtn" onClick="newArray()">New Array</button>
         </div>
         
         <div class="bar_prop">
@@ -39,18 +39,25 @@
         </div>
         
         <div class="sortbtn">
-            <button type="button" class="navbar navbtn">Bubble Sort</button>
-            <button type="button" class="navbar navbtn" onClick="insertion_start()">Insertion Sort</button>
-            <button type="button" class="navbar navbtn">Selection Sort</button>
-            <button type="button" class="navbar navbtn">Quick Sort</button>
-            <button type="button" class="navbar navbtn">Merge Sort</button>
+            <button type="button" class="navbar navbtn" onClick="bubbleSort()">Bubble Sort</button>
+            <button type="button" class="navbar navbtn" onClick="insertionSort()">Insertion Sort</button>
+            <button type="button" class="navbar navbtn" onClick="selectionSort()">Selection Sort</button>
+            <button type="button" class="navbar navbtn" onClick="quickSort()">Quick Sort</button>
+            <button type="button" class="navbar navbtn" onClick="mergeSort()">Merge Sort</button>
         </div>
     </div>
 
     <div class="content"> 
     </div>
+
+
     
     <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="js/bubble.js"></script>
     <script type="text/javascript" src="js/insertion.js"></script>
+    <script type="text/javascript" src="js/selection.js"></script>
+    <script type="text/javascript" src="js/quick.js"></script>
+    <script type="text/javascript" src="js/merge.js"></script>
+
 </body>
 </html>

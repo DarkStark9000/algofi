@@ -1,7 +1,6 @@
 const container = document.querySelector('.content');
 
-
-function insertion_start () {
+function newArray () {
   
   let bars = []; 
   
@@ -23,5 +22,4 @@ function insertion_start () {
     bar.appendChild(barLabel);
     container.appendChild(bar);
   }
-
 }
