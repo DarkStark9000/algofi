@@ -39,6 +39,16 @@ function newArray () {
         
         barLabel.classList.add("bar_id");
         barLabel.innerHTML = bars;
+
+        if(barc >= 71) {
+            barLabel.style.fontSize = "0.8em";
+        } else if(barc >=60 && barc < 71) {
+            barLabel.style.fontSize = "1em";
+        } else if(barc > 0 && barc < 40) {
+            barLabel.style.fontSize = "1.1em";
+        } else if(barc >= 40 && barc < 60) {
+            barLabel.style.fontSize = "1em";
+        }
         
         divbar.appendChild(barLabel);
         container.appendChild(divbar);

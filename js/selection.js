@@ -13,7 +13,7 @@ async function selectionSort(delay = 3)
             await new Promise((resolve) =>
             setTimeout(() => {
                 resolve();
-            }, 50)
+            }, 10)
             ); 
 
             var val1 = parseInt(bars[j].childNodes[0].innerHTML); 
