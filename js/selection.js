@@ -56,18 +56,20 @@ async function selectionSort(delay = 3)
     }
     
     enable();
-    
 }
 
 function disable()
 {
     // To disable the button "Generate New Array"
     document.querySelector(".newarr").disabled = true;
-    document.querySelector(".newarr").style.backgroundColor = "#D7D7D7"; 
+    document.querySelector(".newarr").style.backgroundColor = "#D7D7D7";
+    document.querySelector(".newarr").style.cursor = "not-allowed";
     
     // To disable the button "Selection Sort"
     document.querySelector(".slcsort").disabled = true;
-    document.querySelector(".slcsort").style.backgroundColor = "#D7D7D7";  
+    document.querySelector(".slcsort").style.backgroundColor = "#D7D7D7";
+    document.querySelector(".slcsort").style.cursor = "not-allowed";
+
 }
 
 function enable()
@@ -75,8 +77,10 @@ function enable()
     // To enable the button "Generate New Array" after final(sorted)
     document.querySelector(".newarr").disabled = false;
     document.querySelector(".newarr").style.backgroundColor = "#1F2041";
+    document.querySelector(".newarr").style.cursor = "pointer";
     
     // To enable the button "Selection Sort" after final(sorted)
     document.querySelector(".slcsort").disabled = false;
     document.querySelector(".slcsort").style.backgroundColor = "#1F2041";
+    document.querySelector(".slcsort").style.cursor = "pointer";   
 }
