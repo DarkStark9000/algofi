@@ -1,14 +1,12 @@
 async function selectionSort(delay = 3) 
 {
     var speed = document.getElementById("sorts").value;
-    if (speed >= 50) {
-    speed = parseInt(speed / 10);
-    } else {
-    speed = parseInt(speed * 10);
-    } 
+    
+    speed = speed / 10;
+    speed = speed * 100;
     
     disable();
-
+    
     let bars = document.querySelectorAll(".bar"); 
     var min_idx = 0;
     for (var i = 0; i < bars.length; i += 1) { 
@@ -69,7 +67,7 @@ function disable()
     document.querySelector(".slcsort").disabled = true;
     document.querySelector(".slcsort").style.backgroundColor = "#D7D7D7";
     document.querySelector(".slcsort").style.cursor = "not-allowed";
-
+    
 }
 
 function enable()
