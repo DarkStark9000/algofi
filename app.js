@@ -1,22 +1,47 @@
 const container = document.querySelector('.content');
+const bar_count = document.querySelector('#barc');
+var width;
 
-function newArray () { 
-  for (let i = 0; i < 100; i++) 
-  {
-    bars= Math.floor(Math.random() * 101);
-
-    const divbar = document.createElement("div"); 
-    divbar.classList.add("bar");
+function newArray () {
     
-    divbar.style.height = `${bars * 3}px`;
-    divbar.style.transform = `translateX(${i * 30}px)`;
+    container.innerHTML = '';
+    container.innerText = '';
     
-    const barLabel = document.createElement("label");
+    var barc = document.getElementById("barc").value;
+    width = Math.floor(window.innerWidth / barc)-7;
+    if(width > 36) {
+        width = 36;
+    }
     
-    barLabel.classList.add("bar_id");
-    barLabel.innerHTML = bars;
+    for (let i = 0; i < barc; i++) 
+    {
+        bars = Math.floor(Math.random() * 101);
+        
+        const divbar = document.createElement("div"); 
+        divbar.classList.add("bar");
+        
+        divbar.style.height = `${bars * 3}px`;
+        divbar.style.width = width + "px";
+        
+        console.log(barc);
+        
+        if(barc >= 71) {
+            divbar.style.transform = `translateX(${i * 14.6}px)`;
+        } else if(barc >=60 && barc < 71) {
+            divbar.style.transform = `translateX(${i * 20}px)`;
+        } else if(barc > 0 && barc < 40) {
+            divbar.style.transform = `translateX(${i * width * 1.2}px)`;
+        } else if(barc >= 40 && barc < 60) {
+            divbar.style.transform = `translateX(${i *  width * 1.2}px)`;
+        }
+        
+        const barLabel = document.createElement("label");
+        
+        barLabel.classList.add("bar_id");
+        barLabel.innerHTML = bars;
+        
+        divbar.appendChild(barLabel);
+        container.appendChild(divbar);
+    }
     
-    divbar.appendChild(barLabel);
-    container.appendChild(divbar);
-  }
 }
