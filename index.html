@@ -24,26 +24,26 @@
     
     <div class="navbar">
         <div class="newarray">
-            <button type="button" class="navbar navbtn" onClick="newArray()">New Array</button>
+            <button type="button" class="navbar navbtn newarr" onClick="newArray()">New Array</button>
         </div>
         
         <div class="bar_prop">
             <div class="bar_count">
                 <p>Change Bar Count</p>
-                <input type="range" id="barc" min="1" max="100">
+                <input type="range" id="barc" min="1" max="100" step="1">
             </div>
             <div class="sort_speed">
                 <p>Change Sort Speed</p>
-                <input type="range" id="sorts" min="1" max="100">
+                <input type="range" id="sorts" min="1" max="100" step="1">
             </div>
         </div>
         
         <div class="sortbtn">
-            <button type="button" class="navbar navbtn" onClick="bubbleSort()">Bubble Sort</button>
-            <button type="button" class="navbar navbtn" onClick="insertionSort()">Insertion Sort</button>
-            <button type="button" class="navbar navbtn" onClick="selectionSort()">Selection Sort</button>
-            <button type="button" class="navbar navbtn" onClick="quickSort()">Quick Sort</button>
-            <button type="button" class="navbar navbtn" onClick="mergeSort()">Merge Sort</button>
+            <button type="button" class="navbar navbtn bubsort" onClick="bubbleSort()">Bubble Sort</button>
+            <button type="button" class="navbar navbtn inssort" onClick="insertionSort()">Insertion Sort</button>
+            <button type="button" class="navbar navbtn slcsort" onClick="selectionSort()">Selection Sort</button>
+            <button type="button" class="navbar navbtn quicsort" onClick="quickSort()">Quick Sort</button>
+            <button type="button" class="navbar navbtn mrgsort" onClick="mergeSort()">Merge Sort</button>
         </div>
     </div>
     

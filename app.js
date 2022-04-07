@@ -1,5 +1,4 @@
-const container = document.querySelector('.content');
-const bar_count = document.querySelector('#barc');
+const container = document.querySelector('.content'); 
 var width;
 
 function newArray () {
@@ -23,7 +22,6 @@ function newArray () {
         divbar.style.height = `${bars * 3}px`;
         divbar.style.width = width + "px";
         
-        console.log(barc);
         
         if(barc >= 71) {
             divbar.style.transform = `translateX(${i * 14.6}px)`;
