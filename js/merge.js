@@ -1,94 +1,103 @@
+// merge.js
 /* eslint-disable */
-// const allbtn = document.getElementsByClassName("navbtn");
-
 function disable() {
-  for (btn of allbtn) {
+  const allbtn = document.getElementsByClassName("navbtn");
+  for (let btn of allbtn) {
     btn.disabled = true;
     btn.classList.add("disabled");
   }
 }
 
 function enable() {
-  for (btn of allbtn) {
+  const allbtn = document.getElementsByClassName("navbtn");
+  for (let btn of allbtn) {
     btn.disabled = false;
     btn.classList.remove("disabled");
     btn.classList.add("enabled");
   }
 }
 
-async function mergeSort() {
+async function mergeSort(delay = 100) {
   disable();
 
+  let bars = document.querySelectorAll(".bar");
   let speed = document.getElementById("sorts").value;
-
   speed /= 10;
   speed *= 100;
 
-  const bars = document.querySelectorAll(".bar");
+  await mergeSortHelper(bars, 0, bars.length - 1, speed);
 
-  // l is for left index and
-  // r is right index of the sub-array
-  // (arr, l, r)
-  function mergeS(arr, l, r) {
-    if (l >= r) {
-      return; //returns recursively
-    }
-    var m = l + parseInt((r - l) / 2);
-    mergeS(arr, l, m); q
-    mergeS(arr, m + 1, r);
-    merge(arr, l, m, r);
+  for (let i = 0; i < bars.length; i++) {
+    bars[i].style.backgroundColor = "rgb(49, 226, 13)"; // Green color for completed sort
   }
 
   enable();
 }
 
-function merge(arr, l, m, r) {
-  var n1 = m - l + 1;
-  var n2 = r - m;
+async function mergeSortHelper(bars, l, r, speed) {
+  if (l >= r) return; // Base case: the array is of length 1
 
-  // Create temp arrays
-  var L = new Array(n1);
-  var R = new Array(n2);
+  const m = l + Math.floor((r - l) / 2);
+  await mergeSortHelper(bars, l, m, speed);
+  await mergeSortHelper(bars, m + 1, r, speed);
+  await merge(bars, l, m, r, speed);
+}
 
-  // Copy data to temp arrays L[] and R[]
-  for (var i = 0; i < n1; i++) L[i] = arr[l + i];
-  for (var j = 0; j < n2; j++) R[j] = arr[m + 1 + j];
+async function merge(bars, l, m, r, speed) {
+  let n1 = m - l + 1;
+  let n2 = r - m;
 
-  // Merge the temp arrays back into arr[l..r]
+  let L = new Array(n1);
+  let R = new Array(n2);
 
-  // Initial index of first subarray
-  var i = 0;
+  for (let i = 0; i < n1; i++) {
+    L[i] = bars[l + i].style.height;
+    bars[l + i].style.backgroundColor = "darkblue"; // Color update
+  }
+  for (let j = 0; j < n2; j++) {
+    R[j] = bars[m + 1 + j].style.height;
+    bars[m + 1 + j].style.backgroundColor = "red"; // Color update
+  }
 
-  // Initial index of second subarray
-  var j = 0;
-
-  // Initial index of merged subarray
-  var k = l;
+  let i = 0;
+  let j = 0;
+  let k = l;
 
   while (i < n1 && j < n2) {
-    if (L[i] <= R[j]) {
-      arr[k] = L[i];
+    if (parseInt(L[i]) <= parseInt(R[j])) {
+      if (bars[k]) {
+        bars[k].style.height = L[i];
+        bars[k].style.backgroundColor = "rgb(24, 190, 255)"; // Color update
+      }
       i++;
     } else {
-      arr[k] = R[j];
+      if (bars[k]) {
+        bars[k].style.height = R[j];
+        bars[k].style.backgroundColor = "rgb(24, 190, 255)"; // Color update
+      }
       j++;
     }
     k++;
+    await new Promise((resolve) => setTimeout(resolve, speed));
   }
 
-  // Copy the remaining elements of
-  // L[], if there are any
   while (i < n1) {
-    arr[k] = L[i];
+    if (bars[k]) {
+      bars[k].style.height = L[i];
+      bars[k].style.backgroundColor = "rgb(24, 190, 255)"; // Color update
+    }
     i++;
     k++;
+    await new Promise((resolve) => setTimeout(resolve, speed));
   }
 
-  // Copy the remaining elements of
-  // R[], if there are any
   while (j < n2) {
-    arr[k] = R[j];
+    if (bars[k]) {
+      bars[k].style.height = R[j];
+      bars[k].style.backgroundColor = "rgb(24, 190, 255)"; // Color update
+    }
     j++;
     k++;
+    await new Promise((resolve) => setTimeout(resolve, speed));
   }
 }
