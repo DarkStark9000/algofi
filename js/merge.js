@@ -43,6 +43,65 @@ async function mergeSortHelper(bars, l, r, speed) {
   await merge(bars, l, m, r, speed);
 }
 
+// async function merge(bars, l, m, r, speed) {
+//   let n1 = m - l + 1;
+//   let n2 = r - m;
+
+//   let L = new Array(n1);
+//   let R = new Array(n2);
+
+//   for (let i = 0; i < n1; i++) {
+//     L[i] = bars[l + i].style.height;
+//     bars[l + i].style.backgroundColor = "darkblue"; // Color update
+//   }
+//   for (let j = 0; j < n2; j++) {
+//     R[j] = bars[m + 1 + j].style.height;
+//     bars[m + 1 + j].style.backgroundColor = "red"; // Color update
+//   }
+
+//   let i = 0;
+//   let j = 0;
+//   let k = l;
+
+//   while (i < n1 && j < n2) {
+//     if (parseInt(L[i]) <= parseInt(R[j])) {
+//       if (bars[k]) {
+//         bars[k].style.height = L[i];
+//         bars[k].style.backgroundColor = "rgb(24, 190, 255)"; // Color update
+//       }
+//       i++;
+//     } else {
+//       if (bars[k]) {
+//         bars[k].style.height = R[j];
+//         bars[k].style.backgroundColor = "rgb(24, 190, 255)"; // Color update
+//       }
+//       j++;
+//     }
+//     k++;
+//     await new Promise((resolve) => setTimeout(resolve, speed));
+//   }
+
+//   while (i < n1) {
+//     if (bars[k]) {
+//       bars[k].style.height = L[i];
+//       bars[k].style.backgroundColor = "rgb(24, 190, 255)"; // Color update
+//     }
+//     i++;
+//     k++;
+//     await new Promise((resolve) => setTimeout(resolve, speed));
+//   }
+
+//   while (j < n2) {
+//     if (bars[k]) {
+//       bars[k].style.height = R[j];
+//       bars[k].style.backgroundColor = "rgb(24, 190, 255)"; // Color update
+//     }
+//     j++;
+//     k++;
+//     await new Promise((resolve) => setTimeout(resolve, speed));
+//   }
+// }
+
 async function merge(bars, l, m, r, speed) {
   let n1 = m - l + 1;
   let n2 = r - m;
@@ -51,11 +110,14 @@ async function merge(bars, l, m, r, speed) {
   let R = new Array(n2);
 
   for (let i = 0; i < n1; i++) {
-    L[i] = bars[l + i].style.height;
+    L[i] = { height: bars[l + i].style.height, value: bars[l + i].innerText };
     bars[l + i].style.backgroundColor = "darkblue"; // Color update
   }
   for (let j = 0; j < n2; j++) {
-    R[j] = bars[m + 1 + j].style.height;
+    R[j] = {
+      height: bars[m + 1 + j].style.height,
+      value: bars[m + 1 + j].innerText,
+    };
     bars[m + 1 + j].style.backgroundColor = "red"; // Color update
   }
 
@@ -64,15 +126,17 @@ async function merge(bars, l, m, r, speed) {
   let k = l;
 
   while (i < n1 && j < n2) {
-    if (parseInt(L[i]) <= parseInt(R[j])) {
+    if (parseInt(L[i].height) <= parseInt(R[j].height)) {
       if (bars[k]) {
-        bars[k].style.height = L[i];
+        bars[k].style.height = L[i].height;
+        bars[k].innerText = L[i].value;
         bars[k].style.backgroundColor = "rgb(24, 190, 255)"; // Color update
       }
       i++;
     } else {
       if (bars[k]) {
-        bars[k].style.height = R[j];
+        bars[k].style.height = R[j].height;
+        bars[k].innerText = R[j].value;
         bars[k].style.backgroundColor = "rgb(24, 190, 255)"; // Color update
       }
       j++;
@@ -83,7 +147,8 @@ async function merge(bars, l, m, r, speed) {
 
   while (i < n1) {
     if (bars[k]) {
-      bars[k].style.height = L[i];
+      bars[k].style.height = L[i].height;
+      bars[k].innerText = L[i].value;
       bars[k].style.backgroundColor = "rgb(24, 190, 255)"; // Color update
     }
     i++;
@@ -93,7 +158,8 @@ async function merge(bars, l, m, r, speed) {
 
   while (j < n2) {
     if (bars[k]) {
-      bars[k].style.height = R[j];
+      bars[k].style.height = R[j].height;
+      bars[k].innerText = R[j].value;
       bars[k].style.backgroundColor = "rgb(24, 190, 255)"; // Color update
     }
     j++;
